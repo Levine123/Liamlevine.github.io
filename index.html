@@ -237,6 +237,23 @@
   .sheet li { margin-bottom: 7px; }
   .sheet li:last-child { margin-bottom: 0; }
 
+  .sheet img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--aluminum);
+    margin: 4px 0 18px 0;
+  }
+
+  .small-sheet img {
+    display: block;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border: 1px solid var(--aluminum);
+    margin-bottom: 10px;
+  }
+
   .dims {
     display: flex;
     flex-wrap: wrap;
@@ -454,6 +471,7 @@
         <span class="when mono">2024 – 2026</span>
       </div>
       <p class="role">Mechanical Design Team &middot; <span class="stack">SolidWorks, MATLAB, Excel</span></p>
+      <img src="images/lunabotics.jpg" alt="NASA Lunabotics chassis: hand sketch, CAD conveyor assembly, and full rover render">
       <ul>
         <li>Modeled a hybrid ladder-frame chassis in SolidWorks using 3x3-inch aluminum U-channels, built to carry payloads up to three times its own weight.</li>
         <li>Resolved spatial interferences by locking a conveyor angle, narrowing the track width, and repositioning the drive motors around a fixed wheel offset.</li>
@@ -473,6 +491,7 @@
         <span class="when mono">2026 – Present</span>
       </div>
       <p class="role">Mechanical Co-Lead, MaxBot 2.0 &middot; <span class="stack">Python, SolidWorks</span></p>
+      <img src="images/hart.jpg" alt="MaxBot 2.0 build photos: chassis frame, camera cradle module, and CAD workstation">
       <ul>
         <li>Leading mechanical integration for an autonomous food-delivery robot, balancing payload capacity against overall weight distribution.</li>
         <li>Engineering a camera cradle and 3D-printed sensor mounts for LiDAR, ToF, and GPS payloads to keep vision data clean in real time.</li>
@@ -491,6 +510,7 @@
         <span class="when mono">2023 – 2024</span>
       </div>
       <p class="role">Project Lead &middot; <span class="stack">Xcode, Arduino IDE, Fusion 360, SQL</span></p>
+      <img src="images/seascope.jpg" alt="SeaScope buoy hardware and the project's presentation display board">
       <ul>
         <li>Led a team of five to design, build, and field-test a solar-powered water quality buoy for the Navesink River and Sandy Hook Bay.</li>
         <li>Built an iOS app in Xcode with a SQL backend to log and visualize pH, temperature, and turbidity readings in real time.</li>
@@ -507,10 +527,12 @@
     <div class="small-grid">
       <div class="small-sheet">
         <h4>Autonomous cooling fan</h4>
+        <img src="images/cooling.jpg" alt="Breadboard cooling fan build and the finished bottle-mounted version">
         <p>An Arduino Uno and ultrasonic sensor sweep a stepper-mounted fan 180°, lock onto the nearest person, and point airflow at them automatically.</p>
       </div>
       <div class="small-sheet">
         <h4>3D-printed dinosaur toy</h4>
+        <img src="images/dino.jpg" alt="3D-printed dinosaur toy parts, assembled model, and a joint bracket detail">
         <p>A Brachiosaurus toy with ball-and-socket joints and press-fit LED eyes, designed in Onshape and tested with kids ages 3 to 9.</p>
       </div>
     </div>
