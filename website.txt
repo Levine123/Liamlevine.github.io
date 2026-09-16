@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liam M. Levine — Mechanical Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EDEEEA;
+    --paper-line: #D3D5CD;
+    --ink: #1B1D1F;
+    --steel: #4A5560;
+    --steel-soft: #7C8792;
+    --orange: #E8622C;
+    --aluminum: #C9CDD1;
+    --white: #FAFAF8;
+    --max: 920px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  header.titleblock {
+    background: var(--white);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .titleblock-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 28px 24px 0 24px;
+  }
+
+  .titleblock h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px 0;
+  }
+
+  .titleblock .role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    color: var(--steel);
+    margin: 0 0 22px 0;
+  }
+
+  .titlerow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--ink);
+  }
+
+  .titlerow div {
+    padding: 10px 14px;
+    border-right: 1px solid var(--ink);
+    font-size: 0.78rem;
+  }
+
+  .titlerow div:last-child { border-right: none; }
+
+  .titlerow .label {
+    display: block;
+    color: var(--steel-soft);
+    font-size: 0.68rem;
+    margin-bottom: 3px;
+  }
+
+  .titlerow a { text-decoration: none; }
+  .titlerow a:hover { color: var(--orange); }
+
+  nav.tabs {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    gap: 2px;
+    padding: 0 24px;
+    transform: translateY(1px);
+  }
+
+  nav.tabs a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: var(--steel);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-bottom: none;
+    padding: 7px 16px;
+    margin-top: 10px;
+  }
+
+  nav.tabs a:hover { color: var(--orange); border-color: var(--orange); }
+
+  section { padding: 56px 0; }
+
+  .kicker {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--steel-soft);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0 0 22px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-grid p { max-width: 62ch; margin: 0 0 16px 0; }
+
+  .statline {
+    border: 1px solid var(--ink);
+    background: var(--white);
+  }
+
+  .statline div {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--aluminum);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    gap: 12px;
+  }
+
+  .statline div:last-child { border-bottom: none; }
+
+  .statline span:last-child {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--steel);
+    text-align: right;
+  }
+
+  .sheet {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--ink);
+    margin-bottom: 28px;
+    padding: 26px 26px 22px 26px;
+  }
+
+  .sheet::before, .sheet::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--orange);
+  }
+  .sheet::before { top: -1px; left: -1px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+  .sheet::after { top: -1px; right: -1px; border-top: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+
+  .sheet-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .sheet-head h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .sheet-head .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--steel-soft);
+  }
+
+  .sheet .role {
+    font-size: 0.85rem;
+    color: var(--steel);
+    margin: 0 0 16px 0;
+  }
+
+  .sheet .role .stack {
+    color: var(--steel-soft);
+  }
+
+  .sheet ul {
+    margin: 0 0 18px 0;
+    padding-left: 18px;
+  }
+
+  .sheet li { margin-bottom: 7px; }
+  .sheet li:last-child { margin-bottom: 0; }
+
+  .dims {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px dashed var(--aluminum);
+    padding-top: 14px;
+  }
+
+  .dim {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    background: var(--paper);
+    border: 1px solid var(--aluminum);
+    padding: 5px 10px;
+  }
+
+  .dim b { color: var(--orange); }
+
+  .small-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .small-sheet {
+    background: var(--white);
+    border: 1px solid var(--ink);
+    padding: 18px 20px;
+  }
+
+  .small-sheet h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+  }
+
+  .small-sheet p { margin: 0; font-size: 0.9rem; }
+
+  .job {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--aluminum);
+  }
+
+  .job:last-child { border-bottom: none; }
+
+  .job .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--steel-soft);
+  }
+
+  .job h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    margin: 0 0 2px 0;
+  }
+
+  .job .org { font-size: 0.85rem; color: var(--steel); margin-bottom: 10px; }
+
+  .job ul { margin: 0; padding-left: 18px; }
+  .job li { margin-bottom: 6px; }
+
+  .skill-group { margin-bottom: 18px; }
+
+  .skill-group .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--steel-soft);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chip {
+    border: 1px solid var(--steel);
+    padding: 5px 12px;
+    font-size: 0.82rem;
+    background: var(--white);
+  }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    background: var(--white);
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 34px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-inner h2 {
+    border: none;
+    padding: 0;
+    margin: 0 0 6px 0;
+    font-size: 1.3rem;
+  }
+
+  .footer-inner p { margin: 0; color: var(--steel); font-size: 0.9rem; }
+
+  .btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--white);
+    background: var(--orange);
+    padding: 12px 22px;
+    border: 1px solid var(--orange);
+    white-space: nowrap;
+  }
+
+  .btn:hover { background: var(--ink); border-color: var(--ink); }
+
+  .btn.outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .btn.outline:hover { color: var(--orange); border-color: var(--orange); }
+
+  .btnrow { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .copyright {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--steel-soft);
+    padding: 16px 0 30px 0;
+  }
+
+  @media (max-width: 720px) {
+    .titlerow { grid-template-columns: repeat(2, 1fr); }
+    .titlerow div:nth-child(2) { border-right: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 4px; }
+    .small-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="titleblock">
+  <div class="titleblock-inner">
+    <h1>Liam M. Levine</h1>
+    <p class="role">Mechanical engineering student, Rutgers University</p>
+  </div>
+  <div class="titlerow mono">
+    <div><span class="label">phone</span><a href="tel:7327990080">732-799-0080</a></div>
+    <div><span class="label">email</span><a href="mailto:Lilevine100@gmail.com">Lilevine100@gmail.com</a></div>
+    <div><span class="label">linkedin</span><a href="https://linkedin.com/in/liam-levine-7a5785200" target="_blank" rel="noopener">liam-levine-7a5785200</a></div>
+    <div><span class="label">github</span><a href="https://github.com/Levine123" target="_blank" rel="noopener">Levine123</a></div>
+  </div>
+  <nav class="tabs">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="kicker">01 — about</span>
+      <h2 style="border:none; padding:0;">Mechanical design, built to survive contact with a deadline</h2>
+      <p>I'm a mechanical engineering student at Rutgers, currently working through a minor in business on the side. Most of what's on this page came out of a CAD file that had to hold up to a real tolerance, a real machinist, or a real deadline, not just a rendering.</p>
+      <p>I split my time between competition robotics, a food-delivery robot project, and whatever's on the bench at home. If it involves aluminum extrusion, a stepper motor, or a spreadsheet of load calculations, I've probably had my hands on it recently.</p>
+    </div>
+    <div class="statline mono">
+      <div><span>Program</span><span>BS Mech. Eng.</span></div>
+      <div><span>Minor</span><span>Business Admin.</span></div>
+      <div><span>School</span><span>Rutgers SOE</span></div>
+      <div><span>Grad</span><span>2028</span></div>
+      <div><span>GPA</span><span>3.75 / 4.0</span></div>
+      <div><span>Honors</span><span>Eagle Scout '23</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--white); border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);">
+  <div class="wrap">
+    <span class="kicker">02 — projects</span>
+    <h2>Selected work</h2>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <h3>NASA Lunabotics (STAR)</h3>
+        <span class="when mono">2024 – 2026</span>
+      </div>
+      <p class="role">Mechanical Design Team &middot; <span class="stack">SolidWorks, MATLAB, Excel</span></p>
+      <ul>
+        <li>Modeled a hybrid ladder-frame chassis in SolidWorks using 3x3-inch aluminum U-channels, built to carry payloads up to three times its own weight.</li>
+        <li>Resolved spatial interferences by locking a conveyor angle, narrowing the track width, and repositioning the drive motors around a fixed wheel offset.</li>
+        <li>Built nested, double-box sliding electronics drawers, laser-cut from polycarbonate, holding a tight manufacturing tolerance across every revision.</li>
+      </ul>
+      <div class="dims">
+        <span class="dim"><b>5.8 kg</b> chassis</span>
+        <span class="dim"><b>5.102°</b> conveyor angle</span>
+        <span class="dim"><b>12.5"</b> track clearance</span>
+        <span class="dim"><b>0.01"</b> tolerance</span>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <h3>Rutgers Human-AI-Robot Teaming</h3>
+        <span class="when mono">2026 – Present</span>
+      </div>
+      <p class="role">Mechanical Co-Lead, MaxBot 2.0 &middot; <span class="stack">Python, SolidWorks</span></p>
+      <ul>
+        <li>Leading mechanical integration for an autonomous food-delivery robot, balancing payload capacity against overall weight distribution.</li>
+        <li>Engineering a camera cradle and 3D-printed sensor mounts for LiDAR, ToF, and GPS payloads to keep vision data clean in real time.</li>
+        <li>Building an automated door-opening mechanism with custom linkages, so the robot can cross indoor thresholds without a person opening the door for it.</li>
+      </ul>
+      <div class="dims">
+        <span class="dim"><b>15 kg</b> platform</span>
+        <span class="dim"><b>7-state</b> autonomous FSM</span>
+        <span class="dim">LiDAR / ToF / GPS</span>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <h3>SeaScope IoT Water Quality Monitor</h3>
+        <span class="when mono">2023 – 2024</span>
+      </div>
+      <p class="role">Project Lead &middot; <span class="stack">Xcode, Arduino IDE, Fusion 360, SQL</span></p>
+      <ul>
+        <li>Led a team of five to design, build, and field-test a solar-powered water quality buoy for the Navesink River and Sandy Hook Bay.</li>
+        <li>Built an iOS app in Xcode with a SQL backend to log and visualize pH, temperature, and turbidity readings in real time.</li>
+        <li>Built the 3D-printed buoy hull and confirmed it held a stable wireless connection across a multi-day deployment.</li>
+      </ul>
+      <div class="dims">
+        <span class="dim"><b>5</b>-person team</span>
+        <span class="dim"><b>99.8%</b> packet reliability</span>
+        <span class="dim"><b>72 hr</b> deployment</span>
+        <span class="dim">$500 EarthShare award</span>
+      </div>
+    </div>
+
+    <div class="small-grid">
+      <div class="small-sheet">
+        <h4>Autonomous cooling fan</h4>
+        <p>An Arduino Uno and ultrasonic sensor sweep a stepper-mounted fan 180°, lock onto the nearest person, and point airflow at them automatically.</p>
+      </div>
+      <div class="small-sheet">
+        <h4>3D-printed dinosaur toy</h4>
+        <p>A Brachiosaurus toy with ball-and-socket joints and press-fit LED eyes, designed in Onshape and tested with kids ages 3 to 9.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="kicker">03 — experience</span>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <span class="when">2026 – Present</span>
+      <div>
+        <h3>Resident Assistant</h3>
+        <p class="org">Rutgers Residence Life, New Brunswick, NJ</p>
+        <ul>
+          <li>Run day-to-day life for a 45+ resident living-learning community, handling communication through GroupMe and mentoring residents individually.</li>
+          <li>Respond to policy and conflict incidents by working directly with campus security and hall leadership, resolving each one without escalation.</li>
+          <li>Build and run the term's community programming budget and event calendar, drawing 10+ attendees per workshop.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <span class="when">2025 – Present</span>
+      <div>
+        <h3>Learning Assistant &amp; Mentor</h3>
+        <p class="org">Rutgers University, New Brunswick, NJ</p>
+        <ul>
+          <li>LA Mentor (Fall 2026–Present): mentoring Physics 2A Lab and Calculus II learning assistants and helping shape new teaching approaches for the program.</li>
+          <li>Learning Assistant (Fall 2025–Spring 2026): ran twice-weekly active learning sessions for Physics 227, Physics 228 Lab, and Calculus II, across sections of 20+ students.</li>
+          <li>Ran weekly study groups over Zoom for multivariable calculus and electromagnetic field theory, using breakout rooms and regular check-ins to keep quiet students engaged.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--white); border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);">
+  <div class="wrap">
+    <span class="kicker">04 — skills</span>
+    <h2>Tools &amp; methods</h2>
+
+    <div class="skill-group">
+      <span class="label">software &amp; tools</span>
+      <div class="chips">
+        <span class="chip">Fusion 360</span>
+        <span class="chip">SolidWorks</span>
+        <span class="chip">Onshape</span>
+        <span class="chip">AutoCAD</span>
+        <span class="chip">MATLAB / Simulink</span>
+        <span class="chip">Excel</span>
+        <span class="chip">Xcode</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <span class="label">programming &amp; data</span>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">Arduino IDE</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">MATLAB</span>
+        <span class="chip">SQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <span class="label">methodologies</span>
+      <div class="chips">
+        <span class="chip">CAD Modeling</span>
+        <span class="chip">Engineering Drawing Interpretation</span>
+        <span class="chip">Manufacturing Processes</span>
+        <span class="chip">Product Cost Analysis</span>
+        <span class="chip">Lean Manufacturing</span>
+        <span class="chip">Six Sigma</span>
+        <span class="chip">Root Cause Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <h2>Let's talk shop.</h2>
+      <p>Open to internships and co-ops for summer 2027.</p>
+    </div>
+    <div class="btnrow">
+      <a class="btn" href="mailto:Lilevine100@gmail.com">Email me</a>
+      <a class="btn outline" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
+    </div>
+  </div>
+</footer>
+
+<p class="copyright">Built by Liam M. Levine.</p>
+
+</body>
+</html>
