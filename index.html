@@ -122,6 +122,8 @@
 
   .project-inner { max-width: 780px; margin: 0 auto; }
 
+  #dino .project-inner { max-width: 1040px; }
+
   .num-big {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.8rem;
@@ -158,6 +160,15 @@
     height: auto;
     border: 1px solid var(--aluminum);
     margin-bottom: 22px;
+  }
+
+  .project video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--aluminum);
+    margin-bottom: 22px;
+    background: var(--ink);
   }
 
   .project .blurb {
@@ -353,7 +364,8 @@
         <p class="sub">CAD Final Project &middot; <span class="stack">SolidWorks</span> &middot; Fall 2025</p>
         <p class="note">With Akashi Chhaya, Robert Lambert, and Vinicius Santos.</p>
         <img src="images/desk.jpg" alt="SolidWorks assembly of an adjustable-height desk with bevel gear and leadscrew drivetrain">
-        <p class="blurb">A crank-actuated desk that redirects rotational motion through bevel gears into a leadscrew, raising and lowering the desktop.</p>
+        <video src="videos/leadscrew.mp4" poster="images/desk.jpg" controls muted loop playsinline preload="metadata"></video>
+        <p class="blurb">A crank-actuated desk that redirects rotational motion through bevel gears into a leadscrew, raising and lowering the desktop. The clip below is the leadscrew mechanism in motion.</p>
         <div class="dims">
           <span class="dim">bevel-gear drivetrain</span>
           <span class="dim">leadscrew height adjustment</span>
